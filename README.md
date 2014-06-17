@@ -50,11 +50,12 @@ Or load the SVG file and have the browser fall back to PNG on error:
 		onerror="replace_svg_logo_with_png.call(this);" />
 
 In the latter case you should either load the JavaScript bundle that contains
-the `replace_svg_logo_with_png` function. To do this, you should add the assets
-provided in Django Assets SVG to `ASSETS_MODULES` in your `settings.py`:
+the `replace_svg_logo_with_png` function. To do this, you should add
+`django_assets_svg` to your `INSTALLED_APPS`:
 
-	ASSETS_MODULES = [
-	    'django_assets_svg.assets'
+	INSTALLED_APPS = [
+	    ...
+	    'django_assets_svg'
 	]
 
 And then either load the script file directly (before load the image!):
