@@ -11,7 +11,7 @@ setup(
     description=('Django-Assets support for automatically generating '
         'optimised PNG files from SVG sources.'),
     install_requires=[
-        'django-assets',
+        'django-assets>=0.10',
         'Wand>=0.3.7',
     ],
 )

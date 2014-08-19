@@ -43,17 +43,16 @@ class SvgToPng(Bundle):
         The return value is a list of ``FileHunk`` objects, one for each bundle
         that was built.
         """
-        env = self._get_env(env)
         version = None
 
-        output_filename = self.resolve_output(env, version=version)
+        output_filename = self.resolve_output(self.env, version=version)
 
         # If it doesn't exist yet, create the target directory.
         output_dir = path.dirname(output_filename)
         if not path.exists(output_dir):
             os.makedirs(output_dir)
 
-        resolved_contents = self.resolve_contents(env, force=True)
+        resolved_contents = self.resolve_contents(self.env, force=True)
 
         from wand.api import library
         import wand.color
