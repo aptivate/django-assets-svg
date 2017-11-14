@@ -3,7 +3,7 @@ from os import path
 import os
 import subprocess
 
-from webassets.bundle import Bundle
+from webassets.bundle import Bundle, wrap
 from webassets.filter import Filter
 from webassets.merge import FileHunk
 
@@ -43,10 +43,10 @@ class SvgToPng(Bundle):
         The return value is a list of ``FileHunk`` objects, one for each bundle
         that was built.
         """
-        env = self._get_env(env)
+        ctx = wrap(self.env, self)
         version = None
 
-        output_filename = self.resolve_output(env, version=version)
+        output_filename = self.resolve_output(ctx, version=version)
 
         # If it doesn't exist yet, create the target directory.
         output_dir = path.dirname(output_filename)
